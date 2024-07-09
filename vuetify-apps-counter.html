@@ -61,6 +61,11 @@
           <span class="title">{{ title }}</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
+        <template v-if="!isDashboardPage">
+          <v-btn icon @click="goToDashboard">
+            <v-icon>mdi-view-dashboard</v-icon>
+          </v-btn>
+        </template>
         <v-badge :content="headerCounter" color="red" overlap>
           <v-btn icon @click="incrementHeaderCounter">
             <v-icon>mdi-counter</v-icon>
@@ -78,9 +83,9 @@
   </script>
 
   <script type="module">
-    import { createApp, ref, reactive, provide, inject } from 'vue';
+    import { createApp, ref, reactive, provide, inject, computed } from 'vue';
     import { createVuetify } from 'vuetify';
-    import { createRouter, createWebHistory } from 'vue-router';
+    import { createRouter, createWebHistory, useRoute } from 'vue-router';
 
     const vuetify = createVuetify();
 
@@ -190,12 +195,21 @@
     const appTemplate = {
       template: '#app-template',
       setup() {
+        const route = useRoute();
+        const basePath = '/vuetify-apps-counter';
+        const isDashboardPage = computed(() => route.path === '/');
+        const goToDashboard = () => {
+          router.push('/');
+        };
+
         provide('globalStateProvider', useGlobalState());
         return {
           userIcon,
           title,
           headerCounter: globalState.headerCounter,
-          incrementHeaderCounter: useGlobalState().incrementHeaderCounter
+          incrementHeaderCounter: useGlobalState().incrementHeaderCounter,
+          isDashboardPage,
+          goToDashboard
         };
       }
     };
