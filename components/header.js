@@ -2,6 +2,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useCounterStore } from '@xaxay/portal/stores/counter';
+import routesConfig from '@xaxay/portal/config/routes';
 
 export default {
   template: /*template*/`
@@ -30,10 +31,13 @@ export default {
     const router = useRouter();
     const route = useRoute();
     const store = useCounterStore();
-    const title = ref('Dashboard');
+
     const userIcon = ref('mdi-account');
 
     const isDashboardPage = computed(() => route.path === '/dashboard');
+
+    const title = computed(() => routesConfig[route.path]?.title || '');
+
     const counter = computed(() => store.counter);
 
     const goToDashboard = () => {
