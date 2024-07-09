@@ -1,6 +1,7 @@
 // dashboard.js
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import routesConfig from '@xaxay/portal/config/routes';
 
 export default {
   template: /*template*/`
@@ -24,13 +25,20 @@ export default {
     const apps = ref([]);
     const router = useRouter();
 
-    for (let i = 1; i <= 18; i++) {
-      apps.value.push({
-        name: `App ${i}`,
-        icon: 'mdi-application',
-        route: `/app${i}`
+    const routeEntries = Object.entries(routesConfig);
+
+    // Define routes
+    routeEntries
+      .filter(([path, data]) => data.dashboard !== false )
+      .forEach(([path, data]) => {
+
+        apps.value.push({
+          name: data.title,
+          icon: 'mdi-application',
+          route: path
+        });
       });
-    }
+
 
     const openApp = (route) => {
       router.push(route);
