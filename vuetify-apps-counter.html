@@ -83,7 +83,7 @@
   </script>
 
   <script type="module">
-    import { createApp, ref, reactive, provide, inject, computed } from 'vue';
+    import { createApp, ref, reactive, provide, inject, computed, watch } from 'vue';
     import { createVuetify } from 'vuetify';
     import { createRouter, createWebHistory, useRoute } from 'vue-router';
 
@@ -196,17 +196,24 @@
       template: '#app-template',
       setup() {
         const route = useRoute();
-        const basePath = '/vuetify-apps-counter';
         const isDashboardPage = computed(() => route.path === '/');
         const goToDashboard = () => {
           router.push('/');
         };
 
         provide('globalStateProvider', useGlobalState());
+
+        watch(
+          () => globalState.headerCounter,
+          (newValue) => {
+            // Ensure reactivity is working properly
+          }
+        );
+
         return {
           userIcon,
           title,
-          headerCounter: globalState.headerCounter,
+          headerCounter: computed(() => globalState.headerCounter),
           incrementHeaderCounter: useGlobalState().incrementHeaderCounter,
           isDashboardPage,
           goToDashboard
