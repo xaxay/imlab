@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Vuetify 3 with Vue 3 and Pinia</title>
+  <title>ImportMap:Vue3/Vuetify3/Pinia</title>
   <meta name="description" content="A simple Vuetify 3 example with Vue 3 and Pinia"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css"/>
@@ -12,9 +12,10 @@
   <script type="importmap">
   {
     "imports": {
-      "dashboard": "http://localhost:3000/components/dashboard.js",
-      "header": "http://localhost:3000/components/header.js",
-      "counterStore": "http://localhost:3000/stores/counterStore.js",
+      "@xaxay/portal/ui/dashboard": "http://localhost:3000/components/dashboard.js",
+      "@xaxay/portal/ui/header": "http://localhost:3000/components/header.js",
+      "@xaxay/portal/stores/counter": "http://localhost:3000/stores/counterStore.js",
+
       "vue": "https://cdn.jsdelivr.net/npm/vue@3.4.31/dist/vue.esm-browser.js",
       "vuetify": "https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.esm.js",
       "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@4.4.0/dist/vue-router.esm-browser.js",
@@ -43,9 +44,10 @@
     import { createRouter, createWebHistory, useRoute } from 'vue-router';
     import { createPinia } from 'pinia';
     import { createPersistedState } from 'pinia-plugin-persistedstate';
-    import Dashboard from 'dashboard';
-    import HeaderComponent from 'header';
-    import { useCounterStore } from 'counterStore';
+    
+    import Dashboard from '@xaxay/portal/ui/dashboard';
+    import HeaderComponent from '@xaxay/portal/ui/header';
+    import { useCounterStore } from '@xaxay/portal/stores/counter';
 
     const vuetify = createVuetify();
     const pinia = createPinia();

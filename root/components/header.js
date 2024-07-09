@@ -1,7 +1,7 @@
 // header.js
 import { ref, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { useCounterStore } from 'counterStore';
+import { useCounterStore } from '@xaxay/portal/stores/counter';
 
 export default {
   template: /*template*/`
