@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <title>Vuetify 3 with Vue 3 and Pinia</title>
-  <meta name="description" content="A simple Vuetify 3 example with Vue 3 and Pinia">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap">
-  <style>
-    .logo {
-      height: 40px;
-    }
-    .title {
-      font-size: 1.5rem;
-      margin-left: 10px;
-    }
-  </style>
+  <meta name="description" content="A simple Vuetify 3 example with Vue 3 and Pinia"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"/>
 </head>
 <body>
   <script type="importmap">
   {
     "imports": {
       "dashboard": "http://localhost:3000/components/dashboard.js",
+      "header": "http://localhost:3000/components/header.js",
+      "counterStore": "http://localhost:3000/stores/counterStore.js",
       "vue": "https://cdn.jsdelivr.net/npm/vue@3.4.31/dist/vue.esm-browser.js",
       "vuetify": "https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.esm.js",
       "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@4.4.0/dist/vue-router.esm-browser.js",
@@ -37,27 +30,7 @@
 
   <script type="text/x-template" id="app-template">
     <v-app>
-      <v-app-bar app>
-        <v-toolbar-title>
-          <img src="logo.svg" alt="Logo" class="logo">
-          <span class="title">{{ title }}</span>
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <template v-if="!isDashboardPage">
-          <v-btn icon @click="goToDashboard">
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-btn>
-        </template>
-        <v-badge :content="counter" color="red" overlap>
-          <v-btn icon @click="incrementCounter">
-            <v-icon>mdi-counter</v-icon>
-          </v-btn>
-        </v-badge>
-        <v-avatar>
-          <v-icon>{{ userIcon }}</v-icon>
-        </v-avatar>
-      </v-app-bar>
-
+      <header-component/>
       <v-main>
         <router-view></router-view>
       </v-main>
@@ -68,29 +41,18 @@
     import { createApp, ref, computed } from 'vue';
     import { createVuetify } from 'vuetify';
     import { createRouter, createWebHistory, useRoute } from 'vue-router';
-    import { createPinia, defineStore } from 'pinia';
+    import { createPinia } from 'pinia';
     import { createPersistedState } from 'pinia-plugin-persistedstate';
     import Dashboard from 'dashboard';
-  
+    import HeaderComponent from 'header';
+    import { useCounterStore } from 'counterStore';
+
     const vuetify = createVuetify();
     const pinia = createPinia();
     pinia.use(createPersistedState());
-  
-    const useGlobalStore = defineStore('global-counter', {
-      state: () => ({
-        counter: 0
-      }),
-      actions: {
-        incrementCounter() {
-          this.counter += 1;
-        }
-      },
-      persist: true
-    });
-  
-    const userIcon = ref('mdi-account');
+
     const title = ref('Dashboard');
-  
+
     const createAppComponent = (appId) => {
       return {
         template: `
@@ -105,18 +67,19 @@
           </v-container>
         `,
         setup() {
-          const store = useGlobalStore();
+          const store = useCounterStore();
           const appName = ref(`App ${appId}`);
-  
+          const counter = computed(() => store.counter);
+
           return {
             appName,
-            counter: computed(() => store.counter),
+            counter,
             incrementCounter: store.incrementCounter
           };
         }
       };
     };
-  
+
     const routes = [
       { path: '/', redirect: '/dashboard' },
       { path: '/dashboard', component: Dashboard, meta: { title: 'Dashboard' } },
@@ -126,30 +89,32 @@
         meta: { title: `App ${i + 1}` }
       }))
     ];
-  
+
     const router = createRouter({
       history: createWebHistory('/'),
       routes
     });
-  
+
     router.beforeEach((to, from, next) => {
       title.value = to.meta.title;
       next();
     });
-  
+
     const appTemplate = {
       template: '#app-template',
+      components: {
+        HeaderComponent
+      },
       setup() {
         const route = useRoute();
         const isDashboardPage = computed(() => route.path === '/dashboard');
         const goToDashboard = () => {
           router.push('/dashboard');
         };
-  
-        const store = useGlobalStore();
-  
+
+        const store = useCounterStore();
+
         return {
-          userIcon,
           title,
           counter: computed(() => store.counter),
           incrementCounter: store.incrementCounter,
@@ -158,13 +123,13 @@
         };
       }
     };
-  
+
     createApp(appTemplate)
       .use(vuetify)
       .use(router)
       .use(pinia)
       .mount('#app');
   </script>
-  
+
 </body>
 </html>
