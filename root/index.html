@@ -43,6 +43,7 @@
   <script type="importmap">
   {
     "imports": {
+      "dashboard": "http://localhost:3000/components/dashboard.js",
       "vue": "https://cdn.jsdelivr.net/npm/vue@3.4.31/dist/vue.esm-browser.js",
       "vuetify": "https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.esm.js",
       "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@4.4.0/dist/vue-router.esm-browser.js",
@@ -91,11 +92,12 @@
     import { createRouter, createWebHistory, useRoute } from 'vue-router';
     import { createPinia, defineStore } from 'pinia';
     import { createPersistedState } from 'pinia-plugin-persistedstate';
-
+    import Dashboard from 'dashboard';
+  
     const vuetify = createVuetify();
     const pinia = createPinia();
     pinia.use(createPersistedState());
-
+  
     const useGlobalStore = defineStore('global-counter', {
       state: () => ({
         counter: 0
@@ -107,49 +109,10 @@
       },
       persist: true
     });
-
+  
     const userIcon = ref('mdi-account');
     const title = ref('Dashboard');
-
-    const Dashboard = {
-      template: `
-        <v-container fluid>
-          <div class="app-grid">
-            <v-card
-              v-for="(app, index) in apps"
-              :key="index"
-              @click="openApp(app.route)"
-              class="app-card"
-            >
-              <v-card-text class="text-center">
-                <v-icon class="app-icon" size="5rem">{{ app.icon }}</v-icon>
-                <div class="app-name">{{ app.name }}</div>
-              </v-card-text>
-            </v-card>
-          </div>
-        </v-container>
-      `,
-      setup() {
-        const apps = ref([]);
-        for (let i = 1; i <= 18; i++) {
-          apps.value.push({
-            name: `App ${i}`,
-            icon: 'mdi-application',
-            route: `/app${i}`
-          });
-        }
-
-        const openApp = (route) => {
-          router.push(route);
-        };
-
-        return {
-          apps,
-          openApp
-        };
-      }
-    };
-
+  
     const createAppComponent = (appId) => {
       return {
         template: `
@@ -166,7 +129,7 @@
         setup() {
           const store = useGlobalStore();
           const appName = ref(`App ${appId}`);
-
+  
           return {
             appName,
             counter: computed(() => store.counter),
@@ -175,7 +138,7 @@
         }
       };
     };
-
+  
     const routes = [
       { path: '/', redirect: '/dashboard' },
       { path: '/dashboard', component: Dashboard, meta: { title: 'Dashboard' } },
@@ -185,17 +148,17 @@
         meta: { title: `App ${i + 1}` }
       }))
     ];
-
+  
     const router = createRouter({
       history: createWebHistory('/'),
       routes
     });
-
+  
     router.beforeEach((to, from, next) => {
       title.value = to.meta.title;
       next();
     });
-
+  
     const appTemplate = {
       template: '#app-template',
       setup() {
@@ -204,9 +167,9 @@
         const goToDashboard = () => {
           router.push('/dashboard');
         };
-
+  
         const store = useGlobalStore();
-
+  
         return {
           userIcon,
           title,
@@ -217,12 +180,13 @@
         };
       }
     };
-
+  
     createApp(appTemplate)
       .use(vuetify)
       .use(router)
       .use(pinia)
       .mount('#app');
   </script>
+  
 </body>
 </html>
