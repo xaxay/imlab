@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vuetify 3 with Vue 3</title>
-  <meta name="description" content="A simple Vuetify 3 example with Vue 3">
+  <title>Vuetify 3 with Vue 3 and Pinia</title>
+  <meta name="description" content="A simple Vuetify 3 example with Vue 3 and Pinia">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap">
@@ -46,6 +46,7 @@
       "vue": "https://cdn.jsdelivr.net/npm/vue@3.4.31/dist/vue.esm-browser.js",
       "vuetify": "https://cdn.jsdelivr.net/npm/vuetify@3.6.11/dist/vuetify.esm.js",
       "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@4.4.0/dist/vue-router.esm-browser.js",
+      "pinia": "https://cdn.jsdelivr.net/npm/pinia@2.1.17/dist/pinia.esm-browser.js",
       "@vue/devtools-api": "https://cdn.jsdelivr.net/npm/@vue/devtools-api@6/+esm"
     }
   }
@@ -83,26 +84,24 @@
   </script>
 
   <script type="module">
-    import { createApp, ref, reactive, provide, inject, computed } from 'vue';
+    import { createApp, ref, computed } from 'vue';
     import { createVuetify } from 'vuetify';
     import { createRouter, createWebHistory, useRoute } from 'vue-router';
+    import { createPinia, defineStore } from 'pinia';
 
     const vuetify = createVuetify();
+    const pinia = createPinia();
 
-    const globalState = reactive({
-      counter: 0
+    const useGlobalStore = defineStore('global', {
+      state: () => ({
+        counter: 0
+      }),
+      actions: {
+        incrementCounter() {
+          this.counter += 1;
+        }
+      }
     });
-
-    const useGlobalState = () => {
-      const incrementCounter = () => {
-        globalState.counter += 1;
-      };
-
-      return {
-        globalState,
-        incrementCounter
-      };
-    };
 
     const userIcon = ref('mdi-account');
     const title = ref('Dashboard');
@@ -160,18 +159,14 @@
           </v-container>
         `,
         setup() {
-          const { globalState, incrementCounter } = inject('globalStateProvider');
+          const store = useGlobalStore();
           const appName = ref(`App ${appId}`);
-
-          const incrementAppCounter = () => {
-            incrementCounter();
-          };
 
           title.value = appName.value;
           return {
             appName,
-            counter: computed(() => globalState.counter),
-            incrementCounter: incrementAppCounter
+            counter: computed(() => store.counter),
+            incrementCounter: store.incrementCounter
           };
         }
       };
@@ -199,13 +194,13 @@
           router.push('/');
         };
 
-        provide('globalStateProvider', useGlobalState());
+        const store = useGlobalStore();
 
         return {
           userIcon,
           title,
-          counter: computed(() => globalState.counter),
-          incrementCounter: useGlobalState().incrementCounter,
+          counter: computed(() => store.counter),
+          incrementCounter: store.incrementCounter,
           isDashboardPage,
           goToDashboard
         };
@@ -215,6 +210,7 @@
     createApp(appTemplate)
       .use(vuetify)
       .use(router)
+      .use(pinia)
       .mount('#app');
   </script>
 </body>
