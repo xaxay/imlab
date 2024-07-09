@@ -85,7 +85,7 @@
   </script>
 
   <script type="module">
-    import { createApp, ref, computed } from 'vue';
+    import { createApp, ref, computed, watch } from 'vue';
     import { createVuetify } from 'vuetify';
     import { createRouter, createWebHistory, useRoute } from 'vue-router';
     import { createPinia, defineStore } from 'pinia';
@@ -93,7 +93,7 @@
     const vuetify = createVuetify();
     const pinia = createPinia();
 
-    const useGlobalStore = defineStore('global', {
+    const useGlobalStore = defineStore('global-counter', {
       state: () => ({
         counter: 0
       }),
@@ -101,7 +101,24 @@
         incrementCounter() {
           this.counter += 1;
         }
+      },
+      persist: true
+    });
+
+    // Load the state from localStorage
+    pinia.use(({ store }) => {
+      const storedState = localStorage.getItem(store.$id);
+      if (storedState) {
+        store.$patch(JSON.parse(storedState));
       }
+
+      watch(
+        () => store.$state,
+        (state) => {
+          localStorage.setItem(store.$id, JSON.stringify(state));
+        },
+        { deep: true }
+      );
     });
 
     const userIcon = ref('mdi-account');
