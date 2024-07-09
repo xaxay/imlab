@@ -170,7 +170,7 @@
           title.value = appName.value;
           return {
             appName,
-            counter: globalState.counter,
+            counter: computed(() => globalState.counter),
             incrementCounter: incrementAppCounter
           };
         }
