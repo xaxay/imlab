@@ -167,7 +167,6 @@
           const store = useGlobalStore();
           const appName = ref(`App ${appId}`);
 
-          title.value = appName.value;
           return {
             appName,
             counter: computed(() => store.counter),
@@ -178,10 +177,12 @@
     };
 
     const routes = [
-      { path: '/', component: Dashboard },
+      { path: '/', redirect: '/dashboard' },
+      { path: '/dashboard', component: Dashboard, meta: { title: 'Dashboard' } },
       ...Array.from({ length: 18 }, (_, i) => ({
         path: `/app${i + 1}`,
-        component: createAppComponent(i + 1)
+        component: createAppComponent(i + 1),
+        meta: { title: `App ${i + 1}` }
       }))
     ];
 
@@ -190,13 +191,18 @@
       routes
     });
 
+    router.beforeEach((to, from, next) => {
+      title.value = to.meta.title;
+      next();
+    });
+
     const appTemplate = {
       template: '#app-template',
       setup() {
         const route = useRoute();
-        const isDashboardPage = computed(() => route.path === '/');
+        const isDashboardPage = computed(() => route.path === '/dashboard');
         const goToDashboard = () => {
-          router.push('/');
+          router.push('/dashboard');
         };
 
         const store = useGlobalStore();
