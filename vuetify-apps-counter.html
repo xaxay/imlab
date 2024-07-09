@@ -66,8 +66,8 @@
             <v-icon>mdi-view-dashboard</v-icon>
           </v-btn>
         </template>
-        <v-badge :content="headerCounter" color="red" overlap>
-          <v-btn icon @click="incrementHeaderCounter">
+        <v-badge :content="counter" color="red" overlap>
+          <v-btn icon @click="incrementCounter">
             <v-icon>mdi-counter</v-icon>
           </v-btn>
         </v-badge>
@@ -83,24 +83,24 @@
   </script>
 
   <script type="module">
-    import { createApp, ref, reactive, provide, inject, computed, watch } from 'vue';
+    import { createApp, ref, reactive, provide, inject, computed } from 'vue';
     import { createVuetify } from 'vuetify';
     import { createRouter, createWebHistory, useRoute } from 'vue-router';
 
     const vuetify = createVuetify();
 
     const globalState = reactive({
-      headerCounter: 0
+      counter: 0
     });
 
     const useGlobalState = () => {
-      const incrementHeaderCounter = () => {
-        globalState.headerCounter += 1;
+      const incrementCounter = () => {
+        globalState.counter += 1;
       };
 
       return {
         globalState,
-        incrementHeaderCounter
+        incrementCounter
       };
     };
 
@@ -152,28 +152,26 @@
           <v-container fluid>
             <h1>{{ appName }}</h1>
             <p>Content for {{ appName }}</p>
-            <v-badge :content="appCounter" color="red" overlap>
-              <v-btn icon @click="incrementAppCounter">
+            <v-badge :content="counter" color="red" overlap>
+              <v-btn icon @click="incrementCounter">
                 <v-icon>mdi-counter</v-icon>
               </v-btn>
             </v-badge>
           </v-container>
         `,
         setup() {
-          const { globalState, incrementHeaderCounter } = inject('globalStateProvider');
+          const { globalState, incrementCounter } = inject('globalStateProvider');
           const appName = ref(`App ${appId}`);
-          const appCounter = ref(0);
 
           const incrementAppCounter = () => {
-            appCounter.value += 1;
-            incrementHeaderCounter();
+            incrementCounter();
           };
 
           title.value = appName.value;
           return {
             appName,
-            appCounter,
-            incrementAppCounter
+            counter: globalState.counter,
+            incrementCounter: incrementAppCounter
           };
         }
       };
@@ -203,18 +201,11 @@
 
         provide('globalStateProvider', useGlobalState());
 
-        watch(
-          () => globalState.headerCounter,
-          (newValue) => {
-            // Ensure reactivity is working properly
-          }
-        );
-
         return {
           userIcon,
           title,
-          headerCounter: computed(() => globalState.headerCounter),
-          incrementHeaderCounter: useGlobalState().incrementHeaderCounter,
+          counter: computed(() => globalState.counter),
+          incrementCounter: useGlobalState().incrementCounter,
           isDashboardPage,
           goToDashboard
         };
