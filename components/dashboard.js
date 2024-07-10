@@ -12,11 +12,10 @@ export default {
         flat
         clearable
         prepend-inner-icon="mdi-magnify"
-        class="mb-1"
       ></v-text-field>
       <div class="app-grid">
         <v-hover
-          v-for="app in filteredApps"
+          v-for="(app,appIndex) in filteredApps"
           :key="app.name"
           v-slot:default="{ isHovering, props }"
         >
@@ -25,6 +24,7 @@ export default {
             class="app-card"
             :elevation="isHovering ? 16 : 2"
             v-bind="props"
+            color="{{ (appIndex & 1) === 0 ? 'green' : 'blue' }}"
           >
             <v-card-text class="text-center">
               <v-icon class="app-icon" size="5rem">{{ app.icon }}</v-icon>
@@ -50,7 +50,7 @@ export default {
       .forEach(([path, data]) => {
         apps.value.push({
           name: data.title,
-          icon: 'mdi-application',
+          icon: data.icon || 'mdi-application',
           route: path
         });
       });
@@ -101,14 +101,13 @@ const STYLES = /*css*/`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 150px;
-  width: 150px;
+  width: 10rem;
+  height: 14rem;
   cursor: pointer;
+  padding-top: 0rem;
 }
 
 .app-icon {
-  font-size: 64px;
-  margin-bottom: 10px;
 }
 
 .app-name {

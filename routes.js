@@ -1,8 +1,10 @@
 export default {
-    "/dashboard": { "title": "Dashboard", "module": "@xaxay/portal/ui/plugin/dashboard", "default": true, dashboard: false},
-    "/app1": { "title": "app1", "module": "@xaxay/portal/ui/plugin/app1"},
-    "/app2": { "title": "app2", "module": "@xaxay/portal/ui/plugin/app2"},
-    "/app3": { "title": "app3", "module": "@xaxay/portal/ui/plugin/app3"},
+    "/dashboard": { "title": "Dashboard", "icon": "mdi-view-dashboard", "module": "@xaxay/portal/ui/plugin/dashboard", "default": true, dashboard: false},
+    
+    "/admim": { "title": "Administration", "icon": "mdi-cog", "module": "@xaxay/portal/ui/plugin/admin"},
+    "/account": { "title": "My account", "icon": "mdi-badge-account-horizontal-outline", "module": "@xaxay/portal/ui/plugin/account"},
+    "/rumors": { "title": "The incredible and unbelievable news", "module": "@xaxay/portal/ui/plugin/rumors"},
+    
     // "/app4": { "title": "app4", "module": "@xaxay/portal/ui/plugin/app4"},
     "/app5": { "title": "app5", "module": "@xaxay/portal/ui/plugin/app5"},
     "/app6": { "title": "app6", "module": "@xaxay/portal/ui/plugin/app6"},
