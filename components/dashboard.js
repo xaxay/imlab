@@ -9,8 +9,10 @@ export default {
       <v-text-field
         v-model="searchQuery"
         label="Search Apps"
+        flat
         clearable
-        class="mb-4"
+        prepend-inner-icon="mdi-magnify"
+        class="mb-1"
       ></v-text-field>
       <div class="app-grid">
         <v-card
@@ -50,9 +52,8 @@ export default {
     };
 
     const filteredApps = computed(() => {
-      return apps.value.filter(app =>
-        app.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-      );
+      const search = searchQuery.value.toLowerCase();
+      return apps.value.filter(app => !searchQuery.value || app.name.toLowerCase().includes(search));
     });
 
     let styleElement;
