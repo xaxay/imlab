@@ -7,24 +7,31 @@ import routesConfig from '@xaxay/portal/config/routes';
 export default {
   template: /*template*/`
     <v-app-bar app>
+
       <v-img src="logo.svg" alt="Logo" class="logo" max-width="5rem"></v-img>
+
       <v-toolbar-title>
         <span class="title">{{ title }}</span>
       </v-toolbar-title>
+
       <v-spacer></v-spacer>
+
       <template v-if="!isDashboardPage">
         <v-btn icon @click="goToDashboard">
           <v-icon>mdi-view-dashboard</v-icon>
         </v-btn>
       </template>
+
       <v-btn icon @click="store.resetCounter">
-        <v-badge :content="counter" color="red" offset-x="-5">
+        <v-badge :content="counter" color="red" offset-x="-5" max="99">
           <v-icon>mdi-bell</v-icon>
         </v-badge>
       </v-btn>
+
       <v-avatar class="mx-4">
         <v-icon>{{ userIcon }}</v-icon>
       </v-avatar>
+
     </v-app-bar>
   `,
   setup() {

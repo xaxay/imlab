@@ -11,8 +11,8 @@ export const useCounterStore = defineStore('counter', {
     incrementCounter() {
       this.counter += 1;
     },
-    multiplyCounter(factor = 2) {
-      this.counter *= factor;
+    multiplyCounter() {
+      this.counter *= 2;
     },
     resetCounter() {
       this.counter = 0;

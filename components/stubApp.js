@@ -8,11 +8,28 @@ export default {
     <v-container fluid>
       <h1>{{ appName }}</h1>
       <p>Content for {{ appName }}</p>
-      <v-badge :content="counter" color="red" overlap>
-        <v-btn icon @click="incrementCounter">
-          <v-icon>mdi-counter</v-icon>
+      
+      <v-badge :content="counter" color="red" overlap class="mt-4 mx-4" max="99">
+        <v-btn icon @click="store.resetCounter" size="x-large">
+          <v-icon size="x-large">mdi-bell-off</v-icon>
+          0
         </v-btn>
       </v-badge>
+
+      <v-badge :content="counter" color="red" overlap class="mt-4 mx-4" max="99">
+        <v-btn icon @click="store.incrementCounter" size="x-large">
+          <v-icon size="x-large">mdi-bell-plus</v-icon>
+          +1
+        </v-btn>
+      </v-badge>
+
+      <v-badge :content="counter" color="red" overlap class="mt-4 mx-4">
+        <v-btn icon @click="store.multiplyCounter" size="x-large">
+          <v-icon size="x-large">mdi-bell-remove</v-icon>
+          x2
+        </v-btn>
+      </v-badge>
+
     </v-container>
   `,
   setup() {
@@ -33,7 +50,7 @@ export default {
     return {
       appName,
       counter,
-      incrementCounter: store.incrementCounter
+      store
     };
   }
 };
