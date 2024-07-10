@@ -71,7 +71,10 @@ Explore this POC to see how it can streamline your development process, enhance 
 
 ## How the Project Works
 
-The project is structured to demonstrate a micro-frontend architecture using Vue 3 and related technologies. Here's a brief overview of the key components:
+The project is structured to demonstrate a micro-frontend architecture using Vue 3 and related technologies. 
+For simplicity, this project does not use any build system.
+
+Here's a brief overview of the key components:
 
 1. **Import Map**: The `importmap` in the `index.html` file defines the module paths, allowing us to load external modules directly from URLs.
 2. **Vue Application**: The main Vue application is created in `main.js`, where it sets up Vuetify, Pinia, and the router.
