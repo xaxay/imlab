@@ -1,14 +1,20 @@
 // dashboard.js
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import routesConfig from '@xaxay/portal/config/routes';
 
 export default {
   template: /*template*/`
     <v-container fluid>
+      <v-text-field
+        v-model="searchQuery"
+        label="Search Apps"
+        clearable
+        class="mb-4"
+      ></v-text-field>
       <div class="app-grid">
         <v-card
-          v-for="(app, index) in apps"
+          v-for="(app, index) in filteredApps"
           :key="index"
           @click="openApp(app.route)"
           class="app-card"
@@ -23,15 +29,15 @@ export default {
   `,
   setup() {
     const apps = ref([]);
+    const searchQuery = ref('');
     const router = useRouter();
 
     const routeEntries = Object.entries(routesConfig);
 
     // Define routes
     routeEntries
-      .filter(([path, data]) => data.dashboard !== false )
+      .filter(([path, data]) => data.dashboard !== false)
       .forEach(([path, data]) => {
-
         apps.value.push({
           name: data.title,
           icon: 'mdi-application',
@@ -39,10 +45,15 @@ export default {
         });
       });
 
-
     const openApp = (route) => {
       router.push(route);
     };
+
+    const filteredApps = computed(() => {
+      return apps.value.filter(app =>
+        app.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+    });
 
     let styleElement;
 
@@ -61,6 +72,8 @@ export default {
 
     return {
       apps,
+      searchQuery,
+      filteredApps,
       openApp
     };
   }
@@ -93,5 +106,3 @@ const STYLES = /*css*/`
   font-size: 1.2rem;
 }
 `;
-
-
