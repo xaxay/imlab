@@ -20,8 +20,9 @@ export default {
         <v-btn icon @click="goToDashboard">
           <v-icon>mdi-view-dashboard</v-icon>
           <v-tooltip activator="parent" location="bottom">
-          Open dashboard
-        </v-tooltip>
+            <b>Dashboard</b>
+            <br>Click to open
+          </v-tooltip>
         </v-btn>
       </template>
 
