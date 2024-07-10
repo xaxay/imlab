@@ -15,7 +15,7 @@ export default {
       ></v-text-field>
       <div class="app-grid">
         <v-hover
-          v-for="(app,appIndex) in filteredApps"
+          v-for="(app, appIndex) in filteredApps"
           :key="app.name"
           v-slot:default="{ isHovering, props }"
         >
@@ -24,10 +24,12 @@ export default {
             class="app-card"
             :elevation="isHovering ? 16 : 2"
             v-bind="props"
-            color="{{ (appIndex & 1) === 0 ? 'green' : 'blue' }}"
+            :color="appIndex % 2 === 0 ? 'green' : 'blue'"
           >
             <v-card-text class="text-center">
-              <v-icon class="app-icon" size="5rem">{{ app.icon }}</v-icon>
+              <div class="icon-circle">
+                <v-icon class="app-icon" size="5rem">{{ app.icon }}</v-icon>
+              </div>
               <div class="app-name">{{ app.name }}</div>
             </v-card-text>
 
@@ -100,17 +102,31 @@ const STYLES = /*css*/`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: top;
   width: 10rem;
-  height: 14rem;
+  height: 15rem;
   cursor: pointer;
   padding-top: 0rem;
 }
 
+.icon-circle {
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7rem;
+  height: 7rem;
+  margin: 0 auto 1rem auto;
+}
+
 .app-icon {
+  color: black;
 }
 
 .app-name {
   font-size: 1.2rem;
+  line-height: 1.3rem;
 }
 `;
+
