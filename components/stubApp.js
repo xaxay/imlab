@@ -13,6 +13,9 @@ export default {
         <v-btn icon @click="store.resetCounter" size="x-large">
           <v-icon size="x-large">mdi-bell-off</v-icon>
           0
+          <v-tooltip activator="parent" location="bottom">
+            Click to reset
+          </v-tooltip>
         </v-btn>
       </v-badge>
 
@@ -20,6 +23,9 @@ export default {
         <v-btn icon @click="store.incrementCounter" size="x-large">
           <v-icon size="x-large">mdi-bell-plus</v-icon>
           +1
+          <v-tooltip activator="parent" location="bottom">
+            Click to increment
+          </v-tooltip>
         </v-btn>
       </v-badge>
 
@@ -27,6 +33,9 @@ export default {
         <v-btn icon @click="store.multiplyCounter" size="x-large">
           <v-icon size="x-large">mdi-bell-remove</v-icon>
           x2
+          <v-tooltip activator="parent" location="bottom">
+            Click to multiply
+          </v-tooltip>
         </v-btn>
       </v-badge>
 

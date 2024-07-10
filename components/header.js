@@ -19,6 +19,9 @@ export default {
       <template v-if="!isDashboardPage">
         <v-btn icon @click="goToDashboard">
           <v-icon>mdi-view-dashboard</v-icon>
+          <v-tooltip activator="parent" location="bottom">
+          Open dashboard
+        </v-tooltip>
         </v-btn>
       </template>
 
@@ -26,6 +29,10 @@ export default {
         <v-badge :content="counter" color="red" offset-x="-5" max="99">
           <v-icon>mdi-bell</v-icon>
         </v-badge>
+        <v-tooltip activator="parent" location="bottom">
+          <b>Notifications</b>
+          <br>Click to reset
+        </v-tooltip>
       </v-btn>
 
       <v-avatar class="mx-4">
