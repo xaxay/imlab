@@ -17,6 +17,7 @@ Do you have a complex UI and want to streamline your development process, enhanc
 ### What's the Big Idea?
 
 This concept allows any component to have its own dedicated CI/CD pipeline, hosting, and repository, ensuring seamless integration and independent updates.
+From other side all components used some shared frameworks and libraries to minimize overhead.
 You can test and debug any local component with others from any environment (development, staging, production) without affecting other users.
 
 ### Key Features
