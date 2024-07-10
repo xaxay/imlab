@@ -15,17 +15,25 @@ export default {
         class="mb-1"
       ></v-text-field>
       <div class="app-grid">
-        <v-card
-          v-for="(app, index) in filteredApps"
-          :key="index"
-          @click="openApp(app.route)"
-          class="app-card"
+        <v-hover
+          v-for="app in filteredApps"
+          :key="app.name"
+          v-slot:default="{ isHovering, props }"
         >
-          <v-card-text class="text-center">
-            <v-icon class="app-icon" size="5rem">{{ app.icon }}</v-icon>
-            <div class="app-name">{{ app.name }}</div>
-          </v-card-text>
-        </v-card>
+          <v-card
+            @click="openApp(app.route)"
+            class="app-card"
+            :elevation="isHovering ? 16 : 2"
+            v-bind="props"
+          >
+            <v-card-text class="text-center">
+              <v-icon class="app-icon" size="5rem">{{ app.icon }}</v-icon>
+              <div class="app-name">{{ app.name }}</div>
+            </v-card-text>
+
+            <v-tooltip activator="parent" location="top" offset="-10">Click to open</v-tooltip>
+          </v-card>
+        </v-hover>
       </div>
     </v-container>
   `,
