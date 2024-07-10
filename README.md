@@ -55,7 +55,8 @@ You can test and debug any local component with others from any environment (dev
 
 ### Why Choose This concept?
 
-This proof of concept leverages existing browser features like Import Maps to provide a practical, efficient solution for developing distributed SPAs. It allows teams to work independently without disrupting each other, making it ideal for large-scale applications where rapid development and deployment are essential.
+This proof of concept leverages existing browser features like Import Maps to provide a practical, efficient solution for developing distributed SPAs.
+It allows teams to work independently without disrupting each other, making it ideal for large-scale applications where rapid development and deployment are essential.
 
 Explore this POC to see how it can streamline your development process, enhance collaboration, and improve the overall maintainability of your application.
 
@@ -71,8 +72,9 @@ Explore this POC to see how it can streamline your development process, enhance 
 
 ## How the Project Works
 
-The project is structured to demonstrate a micro-frontend architecture using Vue 3 and related technologies. 
-For simplicity, this project does not use any build system.
+The project is structured to demonstrate a micro-frontend architecture using Vue 3 and related technologies.
+
+**For simplicity**, this project does not use any build system.
 
 Here's a brief overview of the key components:
 
