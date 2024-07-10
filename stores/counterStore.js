@@ -10,6 +10,12 @@ export const useCounterStore = defineStore('counter', {
   actions: {
     incrementCounter() {
       this.counter += 1;
+    },
+    multiplyCounter(factor = 2) {
+      this.counter *= factor;
+    },
+    resetCounter() {
+      this.counter = 0;
     }
   },
   persist: true

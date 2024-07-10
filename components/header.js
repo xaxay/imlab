@@ -7,8 +7,8 @@ import routesConfig from '@xaxay/portal/config/routes';
 export default {
   template: /*template*/`
     <v-app-bar app>
+      <v-img src="logo.svg" alt="Logo" class="logo" max-width="5rem"></v-img>
       <v-toolbar-title>
-        <img src="logo.svg" alt="Logo" class="logo">
         <span class="title">{{ title }}</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -17,12 +17,12 @@ export default {
           <v-icon>mdi-view-dashboard</v-icon>
         </v-btn>
       </template>
-      <v-badge :content="counter" color="red" overlap>
-        <v-btn icon @click="incrementCounter">
-          <v-icon>mdi-counter</v-icon>
-        </v-btn>
-      </v-badge>
-      <v-avatar>
+      <v-btn icon @click="store.resetCounter">
+        <v-badge :content="counter" color="red" offset-x="-5">
+          <v-icon>mdi-bell</v-icon>
+        </v-badge>
+      </v-btn>
+      <v-avatar class="mx-4">
         <v-icon>{{ userIcon }}</v-icon>
       </v-avatar>
     </v-app-bar>
@@ -42,10 +42,6 @@ export default {
 
     const goToDashboard = () => {
       router.push('/dashboard');
-    };
-
-    const incrementCounter = () => {
-      store.incrementCounter();
     };
 
     let styleElement;
@@ -69,18 +65,17 @@ export default {
       counter,
       isDashboardPage,
       goToDashboard,
-      incrementCounter
+      store
     };
   }
 };
 
 const STYLES = /*css*/`
 .logo {
-  height: 40px;
 }
 
 .title {
   font-size: 1.5rem;
-  margin-left: 10px;
+  margin-left: 1rem;
 }
 `;
