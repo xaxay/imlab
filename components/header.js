@@ -14,7 +14,6 @@ export default {
         <span class="title">{{ title }}</span>
       </v-toolbar-title>
 
-      <v-spacer></v-spacer>
 
       <template v-if="!isDashboardPage">
         <v-btn icon @click="goToDashboard">
@@ -87,10 +86,10 @@ export default {
 
 const STYLES = /*css*/`
 .logo {
+  max-width: 2rem;
 }
 
 .title {
   font-size: 1.5rem;
-  margin-left: 1rem;
 }
 `;
