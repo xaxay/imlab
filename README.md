@@ -1,5 +1,7 @@
 # Distributed Single Page Application (SPA): A Proof of Concept
 
+click here to see [Demo](https://xaxay.github.io/poc-frontend-microservices-simplified/)
+
 ## Introduction
 
 Welcome to our Proof of Concept (POC) for a Distributed Single Page Application (SPA). This project showcases a simplified method for building complex web applications by enabling separate teams to independently develop and manage UI components and libraries.
