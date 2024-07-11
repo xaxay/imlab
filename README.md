@@ -4,6 +4,30 @@
 
 Welcome to our Proof of Concept (POC) for a Distributed Single Page Application (SPA). This project showcases a simplified method for building complex web applications by enabling separate teams to independently develop and manage UI components and libraries.
 
+## Installation
+
+To install the necessary dependencies, you need to install the `serve` package globally if you haven't already:
+
+```bash
+npx i serve -g
+
+```
+
+### VisualCode exenssion
+
+- es6-string-html
+
+## Starting HTTP Server in SPA Mode
+
+Start the HTTP server in Single Application Mode (SPA):
+
+```bash
+npx serve -s
+```
+
+This command will start a local server serving your application as a single page application, handling routing on the client side.
+
+
 ## Target Audience
 
 Do you have a complex UI and want to streamline your development process, enhance collaboration, and improve the overall maintainability of your application? This Distributed SPA concept is designed for:
@@ -118,26 +142,3 @@ Here's a brief overview of the key components:
 - [MDI Icons](https://materialdesignicons.com/)
 - [Single-SPA](https://single-spa.js.org/)
 
-## Installation
-
-To install the necessary dependencies, you need to install the `serve` package globally if you haven't already:
-
-```bash
-npx i serve -g
-
-```
-
-### VisualCode exenssion
-
-- es6-string-html
-- Vue - Official
-
-# Starting HTTP Server in SPA Mode
-
-Start the HTTP server in Single Application Mode (SPA):
-
-```bash
-npx serve -s
-```
-
-This command will start a local server serving your application as a single page application, handling routing on the client side.
