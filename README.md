@@ -106,7 +106,7 @@ Here's a brief overview of the key components:
 
 5. **Dynamic Default Route Path**:
    - The default route is dynamically set based on the configuration.
-   - Navigation between different micro-frontends adjusts the active default route accordingly.
+   - it is easy to improve it and filter routes additionaly based on user permissions. 
 
 ## References
 
@@ -116,6 +116,7 @@ Here's a brief overview of the key components:
 - [Vuetify 3](https://next.vuetifyjs.com/en/)
 - [Import Maps](https://github.com/WICG/import-maps)
 - [MDI Icons](https://materialdesignicons.com/)
+- [Single-SPA](https://single-spa.js.org/)
 
 ## Installation
 
