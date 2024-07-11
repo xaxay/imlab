@@ -10,7 +10,7 @@ console.log('BASE_URL', BASE_URL);
 // Define routes
 const routes = [
     ...routeEntries.map(([path, data]) => ({
-        path: `${BASE_URL}${path}`,
+        path: `${path}`,
         component: () => import(data.module),
         meta: { title: data.title }
     }))
@@ -21,9 +21,9 @@ console.log('dynamic routes:', routes);
 const defaultRouteEntry = routeEntries.find(([_routePath, routeData]) => routeData.default);
 
 if (defaultRouteEntry) {
-    const defaultRoutePath = `${BASE_URL}${defaultRouteEntry[0]}`;
+    const [defaultRoutePath] = defaultRouteEntry;
     console.log('default route:', defaultRoutePath);
-    routes.unshift({ path: `${BASE_URL}/`, redirect: defaultRoutePath });
+    routes.unshift({ path: '/', redirect: defaultRoutePath });
 }
 
 export const router = createRouter({
