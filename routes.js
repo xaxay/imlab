@@ -1,9 +1,10 @@
-export default {
+export default
+{
     "/dashboard": { "title": "Dashboard", "icon": "mdi-view-dashboard", "module": "@xaxay/portal/ui/plugin/dashboard", "default": true, dashboard: false},
     
     "/admim": { "title": "Administration", "icon": "mdi-cog", "module": "@xaxay/portal/ui/plugin/admin"},
     "/account": { "title": "My account", "icon": "mdi-badge-account-horizontal-outline", "module": "@xaxay/portal/ui/plugin/account"},
-    "/rumors": { "title": "The incredible and unbelievable news", "module": "@xaxay/portal/ui/plugin/rumors"},
+    "/rumors": { "title": "The incredible and unbelievable news", "icon": "mdi-newspaper", "module": "@xaxay/portal/ui/plugin/rumors"},
     
     // "/app4": { "title": "app4", "module": "@xaxay/portal/ui/plugin/app4"},
     "/app5": { "title": "app5", "module": "@xaxay/portal/ui/plugin/app5"},
