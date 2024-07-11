@@ -127,6 +127,11 @@ npx i serve -g
 
 ```
 
+### VisualCode exenssion
+
+- es6-string-html
+- Vue - Official
+
 # Starting HTTP Server in SPA Mode
 
 Start the HTTP server in Single Application Mode (SPA):
