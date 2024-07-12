@@ -1,4 +1,4 @@
-# Distributed Single Page Application (SPA): A Proof of Concept
+# Distributed Pure Single Page Application (SPA): A Proof of Concept
 
 click here to see [Demo](https://xaxay.github.io/poc-mfe-pure/)
 
