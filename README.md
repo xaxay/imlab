@@ -1,6 +1,6 @@
 # Distributed Single Page Application (SPA): A Proof of Concept
 
-click here to see [Demo](https://xaxay.github.io/poc-frontend-microservices-simplified/)
+click here to see [Demo](https://xaxay.github.io/poc-mfe-pure/)
 
 ## Introduction
 
