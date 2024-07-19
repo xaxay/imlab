@@ -11,6 +11,7 @@ A proof of concept for a Distributed SPA, enabling separate teams to develop and
 It is pure implementation - no any bundler IMPORT-MAPS / HTML / JS / CSS / VUE3 / VUETIFY3 / PINIA.
 
 It is important how it is implemented, not what. It proves that import maps (in-browser modules) is working approach!
+And interaction of shared code among in-browser modules like Pinia counterStore. It shows how to cinitalize and use vue2/vuetify3 and pinia using import maps!
 
 ## Phase2
 
