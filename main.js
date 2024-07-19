@@ -1,4 +1,4 @@
-import { createApp, ref, computed } from 'vue';
+import { createApp } from 'vue';
 import { createVuetify } from 'vuetify';
 import { createPinia } from 'pinia';
 import { createPersistedState } from 'pinia-plugin-persistedstate';
