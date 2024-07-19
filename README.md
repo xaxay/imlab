@@ -1,10 +1,23 @@
 # Distributed Pure Single Page Application (SPA): Proof of Concept
 
-[Demo](https://xaxay.github.io/poc-mfe-pure/)
-
 ## Introduction
 
 A proof of concept for a Distributed SPA, enabling separate teams to develop and manage UI components independently.
+
+## Phase 1
+
+[Click to see Demo](https://xaxay.github.io/poc-mfe-pure/)
+
+It is pure implementation - no any bundler IMPORT-MAPS / HTML / JS / CSS / VUE3 / VUETIFY3 / PINIA.
+
+It is important how it is implemented, not what. It proves that import maps (in-browser modules) is working approach!
+
+## Phase2
+
+[Click to open Phase 2](https://xaxay.github.io/poc-mfe-vite/)
+
+It is full-fledged development version - VITE / VITE-PLUGINS / IMPORT-MAPS / HTML / JS / CSS / VUE3 / VUETIFY3 / PINIA / ESLINT / PLAYWRITE.
+
 
 ## Installation
 
