@@ -54,6 +54,8 @@ It starts http server in SPA mode.
 
 ## References
 
+- [Phase 2](https://github.com/xaxay/poc-mfe-vite/) It is full-fledged development version
+
 - [Vue 3](https://vuejs.org/)
 - [Vue Router](https://router.vuejs.org/)
 - [Pinia](https://pinia.vuejs.org/)
