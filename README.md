@@ -44,7 +44,7 @@ It starts http server in SPA mode.
 - **Pinia Store:** Persistent state management. Shared across header and application. Can be changed in one place and visible in other.
 
 ## References
-- [Phase 2](https://xaxay.github.io/poc-mfe-vite/) full-fledged development version - Vite / ImportMaps / HTML / JS / CSS / Vue3 / Vuetify3 / Pinia / ESLint / PlayWrite.
+- [Phase 2](https://github.com/xaxay/poc-mfe-vite/) full-fledged development version - Vite / ImportMaps / HTML / JS / CSS / Vue3 / Vuetify3 / Pinia / ESLint / PlayWrite.
 
 - [Vue 3](https://vuejs.org/)
 - [Vue Router](https://router.vuejs.org/)
