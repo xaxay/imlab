@@ -3,16 +3,13 @@
 ## Introduction
 
 A proof of concept for a Distributed SPA, enabling separate teams to develop and manage UI components independently.
+It is pure implementation - no any bundler IMPORT-MAPS / HTML / JS / CSS / VUE3 / VUETIFY3 / PINIA.
 
 ## Phase 1
 
 [Click to see Demo](https://xaxay.github.io/poc-mfe-pure/)
 
-It is pure implementation - no any bundler IMPORT-MAPS / HTML / JS / CSS / VUE3 / VUETIFY3 / PINIA.
-
-It proves that import maps (in-browser modules) is working approach!
-It test shared in-browser modules using inside other shared modules.
-You can find Pinia counterStore that can be changed in different modules and the result reactivly updated in all modules that contains it. It shows how to initalize and use vue3/vuetify3 and pinia using import maps!
+It proves that it works and demonstrate how all these parts are initialized and interacted together from different in-browser modules!
 
 ## Phase2
 
