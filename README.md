@@ -15,7 +15,7 @@ and interacted together from different in-browser modules!
 
 ## Phase 2
 
-- [Phase 2 - ](https://github.com/xaxay/poc-mfe-vite/)
+- [Click to open Phase 2](https://github.com/xaxay/poc-mfe-vite/)
 
 It is full-fledged development version that is bases on
 
