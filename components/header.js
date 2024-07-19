@@ -1,5 +1,5 @@
-// header.js
-import { ref, computed, onMounted } from 'vue';
+// components/header.js
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useCounterStore } from '@xaxay/portal/stores/counter';
 import routesConfig from '@xaxay/portal/config/routes';
@@ -66,12 +66,11 @@ export default {
       document.head.appendChild(styleElement);
     });
 
-    // TODO : onUnmounted is unknown 
-    // onUnmounted(() => {
-    //   if (styleElement) {
-    //     document.head.removeChild(styleElement);
-    //   }
-    // });
+    onUnmounted(() => {
+      if (styleElement) {
+        document.head.removeChild(styleElement);
+      }
+    });
 
     return {
       title,
