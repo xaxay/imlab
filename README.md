@@ -3,7 +3,8 @@
 ## Introduction
 
 A proof of concept for a Distributed SPA, enabling separate teams to develop and manage UI components independently.
-It is pure implementation - no any bundler IMPORT-MAPS / HTML / JS / CSS / VUE3 / VUETIFY3 / PINIA.
+- It is pure implementation - no any bundler.
+- ImportMaps / HTML / JS / CSS / Vue3 / Vuetify3 / Pinia.
 
 ## Phase 1
 
@@ -11,34 +12,19 @@ It is pure implementation - no any bundler IMPORT-MAPS / HTML / JS / CSS / VUE3 
 
 It proves that it works and demonstrate how all these parts are initialized and interacted together from different in-browser modules!
 
-## Phase2
-
-[Click to open Phase 2](https://xaxay.github.io/poc-mfe-vite/)
-
-It is full-fledged development version - VITE / VITE-PLUGINS / IMPORT-MAPS / HTML / JS / CSS / VUE3 / VUETIFY3 / PINIA / ESLINT / PLAYWRITE.
-
 
 ## Installation
 
-Install `serve` globally if not already installed: npx i serve -g
+Install `serve` globally if not already installed: `npx i serve -g`
 
 ### Visual Studio Code Extension
 
-- es6-string-html
+It is recomned to install vscode extension `es6-string-html`
 
 ## Starting HTTP Server in SPA Mode
 
-npx serve -s
-
-## Target Audience
-
-Designed for teams seeking to streamline development, improve collaboration, and enhance maintainability.
-
-- **Development Teams:** Work on components independently.
-- **Project Managers:** Reduce bottlenecks.
-- **QA Engineers:** Seamless testing and debugging.
-- **DevOps Teams:** Simplify deployment.
-- **Technical Leads:** Maintain a scalable architecture.
+It starts http server in SPA mode.
+`npx serve -s`
 
 ## Key Features
 
@@ -49,24 +35,16 @@ Designed for teams seeking to streamline development, improve collaboration, and
 - **Dedicated Resources for Components:** Each component can have its own team, repository, CI/CD pipeline, and hosting.
 - **Dynamic Library and Framework Management:** Share common libraries and frameworks, updating versions on the fly.
 
-## Stack of Used Technologies
-
-- **Vue 3**
-- **Vue Router**
-- **Pinia**
-- **Vuetify 3**
-- **Import Maps**
-
 ## How the Project Works
 
 - **Import Map:** Defines module paths in `index.html`.
+- **Micro-Frontend Structure:** Header, Dashboard, Applications, Router, Routes and CounterStore are in-broswe modules shared using ImportsMap;
+- **Router Configuration:** Dynamic routes based on content specifited in routes module.
 - **Vue Application:** Sets up Vuetify, Pinia, and the router in `main.js`.
-- **Router Configuration:** Dynamic routes in `routes.js`.
-- **Pinia Store:** Persistent state management.
-- **Vuetify Components:** Consistent material design UI.
-- **Micro-Frontend Structure:** Independent components developed and deployed separately.
+- **Pinia Store:** Persistent state management. Shared across header and application. Can be changed in one place and visible in other.
 
 ## References
+- [Phase 2](https://xaxay.github.io/poc-mfe-vite/) full-fledged development version - Vite / ImportMaps / HTML / JS / CSS / Vue3 / Vuetify3 / Pinia / ESLint / PlayWrite.
 
 - [Vue 3](https://vuejs.org/)
 - [Vue Router](https://router.vuejs.org/)
@@ -75,3 +53,9 @@ Designed for teams seeking to streamline development, improve collaboration, and
 - [Import Maps](https://github.com/WICG/import-maps)
 - [MDI Icons](https://materialdesignicons.com/)
 - [Single-SPA](https://single-spa.js.org/)
+
+
+
+
+
+
