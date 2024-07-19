@@ -49,7 +49,7 @@ It starts http server in SPA mode.
 - **Pinia Store:** Persistent state management. Shared across header and application. Can be changed in one place and visible in other.
 
 ## References
-- [POC Distributed SPA : Phase-1](https://github.com/xaxay/poc-mfe-pure) pure implementation without any bundler.
+- [POC Distributed SPA : Phase-1](https://github.com/xaxay/poc-mfe-pure) Pure implementation without any bundler.
 - [POC Distributed SPA : Phase 2](https://github.com/xaxay/poc-mfe-vite/) It is full-fledged development version.
 - [POC Distributed SPA : Phase-3](https://github.com/xaxay/poc-mfe-vite-root) Using of multiple repositiories.
 
