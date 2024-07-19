@@ -10,7 +10,16 @@ A proof of concept for a Distributed SPA, enabling separate teams to develop and
 
 [Click to see Demo](https://xaxay.github.io/poc-mfe-pure/)
 
-It proves that it works and demonstrate how all these parts are initialized and interacted together from different in-browser modules!
+It proves that it works and demonstrate how all these parts are initialized
+and interacted together from different in-browser modules!
+
+## Phase 2
+
+- [Phase 2 - ](https://github.com/xaxay/poc-mfe-vite/)
+
+It is full-fledged development version that is bases on
+
+Vite / ImportMaps / HTML / JS / CSS / Vue3 / Vuetify3 / Pinia / ESLint / PlayWrite.
 
 
 ## Installation
@@ -44,7 +53,6 @@ It starts http server in SPA mode.
 - **Pinia Store:** Persistent state management. Shared across header and application. Can be changed in one place and visible in other.
 
 ## References
-- [Phase 2](https://github.com/xaxay/poc-mfe-vite/) full-fledged development version - Vite / ImportMaps / HTML / JS / CSS / Vue3 / Vuetify3 / Pinia / ESLint / PlayWrite.
 
 - [Vue 3](https://vuejs.org/)
 - [Vue Router](https://router.vuejs.org/)
