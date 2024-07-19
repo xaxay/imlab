@@ -1,4 +1,4 @@
-# Distributed Pure Single Page Application (SPA): Proof of Concept
+# [PHASE 1] Distributed Pure Single Page Application (SPA): Proof of Concept
 
 ## Introduction
 
@@ -6,16 +6,12 @@ A proof of concept for a Distributed SPA, enabling separate teams to develop and
 - It is pure implementation - no any bundler.
 - ImportMaps / HTML / JS / CSS / Vue3 / Vuetify3 / Pinia.
 
-## Phase 1
+## Demo
 
 [Click to see Demo](https://xaxay.github.io/poc-mfe-pure/)
 
 It proves that it works and demonstrate how all these parts are initialized
 and interacted together from different in-browser modules!
-
-## Phase 2
-
-- [Click to open Phase 2](https://github.com/xaxay/poc-mfe-vite/)
 
 It is full-fledged development version that is bases on
 
@@ -53,8 +49,9 @@ It starts http server in SPA mode.
 - **Pinia Store:** Persistent state management. Shared across header and application. Can be changed in one place and visible in other.
 
 ## References
-
-- [Phase 2](https://github.com/xaxay/poc-mfe-vite/) It is full-fledged development version
+- [Phase-1](https://github.com/xaxay/poc-mfe-pure) pure implementation without any bundler.
+- [Phase 2](https://github.com/xaxay/poc-mfe-vite/) It is full-fledged development version.
+- [Phase-3](https://github.com/xaxay/poc-mfe-vite-root) Using of multiple repositiories.
 
 - [Vue 3](https://vuejs.org/)
 - [Vue Router](https://router.vuejs.org/)
