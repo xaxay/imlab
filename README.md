@@ -13,10 +13,7 @@ A proof of concept for a Distributed SPA, enabling separate teams to develop and
 It proves that it works and demonstrate how all these parts are initialized
 and interacted together from different in-browser modules!
 
-It is full-fledged development version that is bases on
-
-Vite / ImportMaps / HTML / JS / CSS / Vue3 / Vuetify3 / Pinia / ESLint / PlayWrite.
-
+For simplicity all modules are exposed from one repo!
 
 ## Installation
 
