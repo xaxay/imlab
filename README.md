@@ -1,4 +1,4 @@
-# [PHASE 1] Distributed Pure Single Page Application (SPA): Proof of Concept
+# [PHASE 1] Distributed pure Single Page Application (SPA): Proof of Concept
 
 ## Introduction
 
